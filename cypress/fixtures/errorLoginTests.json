@@ -1,0 +1,14 @@
+[
+    {
+        "TestCaseName":"Incorrect login with no username and a wrong password",
+        "username":"",
+        "password": "password",
+        "errorMessage":"Epic sadface: Username is required"
+    },
+    {
+        "TestCaseName":"Incorrect Password",
+        "username":"standard_user",
+        "password": "WrongPassword",
+        "errorMessage":"Epic sadface: Username and password do not match any user in this service"
+    }
+]
