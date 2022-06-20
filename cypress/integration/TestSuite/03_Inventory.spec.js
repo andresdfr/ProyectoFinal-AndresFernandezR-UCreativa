@@ -11,13 +11,13 @@ describe('Inventory TC | Check products and filters | Functional Testing | Poiti
     })
 
     it('Validar que la cantidad de productos sea la que se muestra en la pantalla', () => {
-        // Get the total of elements in the fixure json file
+        // Get the total of elements in the fixture json file
         let productTotalCount = productList.length;
         // Check the total of elements with the products total displayed
         inventoryPage.countProducts(productTotalCount)
     });
 
-    // Validate product elements with ficure list
+    // Validate product elements with fixture list
     productList.forEach(fx => {
         it(`Validate Product - ${fx.productName}`, function () {
             inventoryPage.checkProductName(fx.productName)
@@ -27,7 +27,7 @@ describe('Inventory TC | Check products and filters | Functional Testing | Poiti
         })
     })
 
-    it.only('Check order functionality', () => {
+    it('Check order functionality', () => {
         // Check Name (A to Z)
         // Order the elements
         inventoryPage.clickAtoZ_DropDown()
