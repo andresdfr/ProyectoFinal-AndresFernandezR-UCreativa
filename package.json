@@ -4,6 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "triggerAllTests-headless": "npx cypress run",
+    "triggerAllTests-headed": "npx cypress run --headed",
+    "triggerAllTests-chrome": "npx cypress run --browser chrome",
+    "triggerAllTests-dashboard": "npx cypress run --record --key d080686c-7d44-4918-8f40-34a1823ff671",
+    "triggerAllTests-TestSuite": "npx cypress run --spec cypress/integration/TestSuite/*",
+    "triggerAllTests-TestSuite-dashboard": "npx cypress run --spec cypress/integration/TestSuite/* --record --key d080686c-7d44-4918-8f40-34a1823ff671",
+    "triggerAllTests-multi-browser": "npm run triggerAllTests-TestSuite -- --browser chrome --headed & npm run triggerAllTests-TestSuite -- --browser firefox --headed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
