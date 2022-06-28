@@ -4,11 +4,9 @@ class InventoryPage {
         productList: () => cy.get('.inventory_list .inventory_item'),
         baseElemProduct: (productName) => cy.get('.inventory_list .inventory_item').contains(productName).parent().parent().parent(),
         prodName: () => cy.get('.inventory_list .inventory_item .inventory_item_description .inventory_item_name'),
-        sortButton: () => cy.get('[data-test="product_sort_container"]')
+        sortButton: () => cy.get('[data-test="product_sort_container"]'),
+        prodPrice: () => cy.get('.inventory_list .inventory_item .inventory_item_description .pricebar > .inventory_item_price')
     }
-
-    productsList = []
-    productsListOrdered = []
 
     countProducts(totalItems){
         this.elements.productList().should(($el) => {
@@ -34,50 +32,31 @@ class InventoryPage {
         this.elements.baseElemProduct(productName).find('.pricebar button').invoke('text').should('eq', defaultBtn)
     }
 
+    productsList = []
     ProductNameList(){
         this.elements.prodName().each(($el) => {
             this.productsList.push($el.text())
-            this.productsListOrdered.push($el.text())
+        })
+        cy.wrap(this.productsList).as("ListaProductos")
+    }
+
+    price01 = 0
+    price02 = 0
+    CheckProductPriceList(){
+        this.elements.prodPrice().each(($el) => {
+            this.price02 = $el.text().slice(1)
+            expect(parseInt(this.price02)).to.be.at.least(parseInt(this.price01))
+            this.price01 = $el.text().slice(1)
         })
     }
 
     clickAtoZ_DropDown(){
-        this.elements.sortButton().select('za')
+        this.elements.sortButton().select('az')
     }
 
-    sortAtoZ(){
-        // this.ProductNameList(this.productsListOrdered)
-        // this.productsListOrdered = this.productsListOrdered.sort() // This sorts alphabetically
-        // cy.log(this.productsListOrdered.sort().reverse())
-        // this.productsList === this.productsListOrdered ? console.log('iguales') : console.log('Diferentes')
-        // expect(this.productsList).to.equal(this.productsListOrdered)
-
-        console.log(this.productsList)
-        console.log(this.productsListOrdered)
-        // cy.debug()
-        this.productsListOrdered.sort();
-        console.log(this.productsListOrdered)
-        
+    clickLowToHigh_DropDown(){
+        this.elements.sortButton().select('lohi')
     }
-
-    // sortZtoA_DropDown(){
-    //     this.elements.sortButton().select('za')
-    // }
-
-    // checkAtoZSort(){
-    //     this.ProductNameList()
-    //     this.productsList.sort()
-    //     this.productsList.reverse()
-    // }
-
-    // sortLowToHigh_DropDown(){
-    //     this.elements.sortButton().select('lohi')
-    // }
-
-    // sortHighToLow_DropDown(){
-    //     this.elements.sortButton().select('hilo')
-    // }
-
 }
 
 module.exports = new InventoryPage()

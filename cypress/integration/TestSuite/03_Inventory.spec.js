@@ -34,11 +34,15 @@ describe('Inventory TC | Check products and filters | Functional Testing | Poiti
         // Get the list after changing the dropdown
         inventoryPage.ProductNameList()
         // Sort the list from a to z
-        // inventoryPage.sortAtoZ()
-        cy.log(inventoryPage.productsList.sort())
-        // cy.log(inventoryPage.productsListOrdered.sort((a, b) => a.localeCompare(b)))
+        cy.get("@ListaProductos").then((lista) => {
+            expect(lista).to.be.equal(lista.sort().reverse())
+        })
 
-        // expect(inventoryPage.productsList).to.equal(inventoryPage.productsListOrdered)
+        // Check Price (low to high)
+        // Order the elements
+        inventoryPage.clickLowToHigh_DropDown()
+        // Check order low to high
+        inventoryPage.CheckProductPriceList()
 
     });
 
