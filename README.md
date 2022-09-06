@@ -1,20 +1,22 @@
-# Proyecto completo en Swag Labs
+# Example proyect in Swag Labs - by Andres Fernandez R
 
-Instalacion:
+Installation:
 - https://code.visualstudio.com/
 - https://nodejs.org/en/download/
-- Opcional: GitHub
-- 
-Correr los siguientes comandos luego de la instalacion de todas las herramientas:
+- Have a github account
+- Optional: GitHub Desktop
+
+Run the following commands after the necessary tools are installed: (Versions may change trough time, the project were created with this ones)
 1. node -v (v16.15.0)
 2. npm install -g npm
 3. npm -v (8.11.0)
 
-Version de Cypress utilizada y comandos para creacion del proyecto:
+To create a project with cypress version 9.7.0:
 - npm init -y
 - npm install cypress --save-dev cypress@9.7.0
+- If the last version of cypress is required run the following command: npm install cypress --save-dev
 - npx cypress open
 
-Comandos para clonar el proyecto de GitHub:
+Commands after clonning this project from GitHub:
 - npm install cypress --save-dev cypress@9.7.0
 - npx cypress open
