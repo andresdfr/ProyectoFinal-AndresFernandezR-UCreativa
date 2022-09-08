@@ -1,5 +1,14 @@
 # Example proyect in Swag Labs - by Andres Fernandez R
 
+In this project:
+- Great structure.
+- UI testing.
+- Correct usage of git and the it's files.
+- Legacy project version, before v10.
+- Use of fixtures.
+- Use of Pages.
+- Use of commands under support.
+
 Installation:
 - https://code.visualstudio.com/
 - https://nodejs.org/en/download/
